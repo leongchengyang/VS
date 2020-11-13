@@ -35,6 +35,9 @@ Route::get('/showCategory',
 [App\Http\Controllers\CategoryController::class, 'show'])->name
 ('showCategory');
 
+Route::get('/deleteCategory/{​​​​id}​​​​', 
+[App\Http\Controllers\CategoryController::class, 'delete'])->name
+('deleteCategory');
 
 Auth::routes();
 

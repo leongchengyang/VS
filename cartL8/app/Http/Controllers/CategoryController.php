@@ -25,7 +25,12 @@ class CategoryController extends Controller
         $categories=Caegory::all();
         return view('showCategory')->with('categories'.$categories);
     }
-
+    
+    Public function delete($id){
+        $categories=Category::find($id);
+        $categories-delete();
+        return redirect()->route('showCategory');
+    }
    
 
 }

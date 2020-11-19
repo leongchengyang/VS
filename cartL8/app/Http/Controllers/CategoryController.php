@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use App\Models\Category;   //step 1 link model (laravel 8 format)
+use App\Models\Product; 
 
 class CategoryController extends Controller
 {
@@ -14,7 +15,10 @@ class CategoryController extends Controller
         $addCategory=Category::create([    //step 3 bind data
             'id'=>$r->ID, //add on 
             'name'=>$r->name, //fullname from HTML
-            
+            'description'=>$r->description,
+            'category'=>$r->category,
+            'price'=>$r->price,
+            'quantity'=>$r->quantity,
         ]);
         
         Return view('insertCategory');// step 5 back to last page

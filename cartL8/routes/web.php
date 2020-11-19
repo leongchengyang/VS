@@ -39,6 +39,10 @@ Route::get('/deleteCategory/{​​​​id}​​​​',
 [App\Http\Controllers\CategoryController::class, 'delete'])->name
 ('deleteCategory');
 
+Route::post('/insertCategory/store', 
+[App\Http\Controllers\CategoryController::class, 'store'])->name
+('insertCategory');
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -19,6 +19,7 @@ class CategoryController extends Controller
             'category'=>$r->category,
             'price'=>$r->price,
             'quantity'=>$r->quantity,
+            'image'=>$r->'-',
         ]);
         
         Return view('insertCategory');// step 5 back to last page

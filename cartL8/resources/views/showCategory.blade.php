@@ -40,24 +40,24 @@
             @endif
 
             <div>
-                <table>
+               <table>
                     <tr>
                         <td>ID</td>
                         <td>Name</td>
                         <td>Action</td>
                     </tr>
+                        
                     
-
                     @foreach($categories as $category)
-                    <tr>    
+                    <tr>
                         <td>{{$category->id}}</td>
                         <td>{{$category->name}}</td>
-                        <td><a href="{​​​​{​​​​ route('deleteCategory', ['id' => $category->id]) }​​​​}​​​​" class="btn btn-danger">Delete</a></td>
+                        <td><a href="{{ route('deleteCategory', ['id' => $category->id]) }}" class="btn btn-danger" onclick="return confirm('Sure Want Delete?')"
+>Delete</a></td>
                     </tr>
                     @endforeach
-
-                </table>
-
+                    
+               </table>
             </div>
         </div>
     </body>

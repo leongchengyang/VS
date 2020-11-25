@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use App\Models\Category;   //step 1 link model (laravel 8 format)
-use App\Models\Product; 
 
 class CategoryController extends Controller
 {
@@ -15,11 +14,7 @@ class CategoryController extends Controller
         $addCategory=Category::create([    //step 3 bind data
             'id'=>$r->ID, //add on 
             'name'=>$r->name, //fullname from HTML
-            'description'=>$r->description,
-            'category'=>$r->category,
-            'price'=>$r->price,
-            'quantity'=>$r->quantity,
-            'image'=>$r->'-',
+            
         ]);
         
         Return view('insertCategory');// step 5 back to last page
@@ -27,15 +22,16 @@ class CategoryController extends Controller
 
 
     public function show(){
-        $categories=Caegory::all();
-        return view('showCategory')->with('categories'.$categories);
+        $categories=Category::all();//instead SQL select * from categories
+        return view('showCategory')->with('categories',$categories);
     }
-    
-    Public function delete($id){
+
+    public function delete($id){
         $categories=Category::find($id);
-        $categories-delete();
+        $categories->delete(); //apply delete from categories where id='$id'
         return redirect()->route('showCategory');
     }
+
    
 
 }

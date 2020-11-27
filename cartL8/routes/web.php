@@ -23,7 +23,7 @@ Route::get('/insertCategory', function () {
 
 
 
-Route::get('/contactus', function () {
+Route::get('/contacts', function () {
     return view('contact');
 });
 

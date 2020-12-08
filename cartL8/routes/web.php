@@ -23,7 +23,7 @@ Route::get('/insertCategory', function () {
 
 
 
-Route::get('/contacts', function () {
+Route::get('/contactus', function () {
     return view('contact');
 });
 
@@ -42,6 +42,13 @@ Route::get('/showProduct', [App\Http\Controllers\ProductController::class, 'show
 
 Route::get('/insertProduct', [App\Http\Controllers\ProductController::class, 'create'])->name('insertProduct');
 
+Route::get('/editproduct/{id}', [App\Http\Controllers\ProductController::class, 'edit'])->name('editproduct');
+
+Route::get('/deleteProduct/{id}', [App\Http\Controllers\ProductController::class, 'delete'])->name('deleteProduct');
+
+Route::post('/updateproduct', [App\Http\Controllers\ProductController::class, 'update'])->name('updateproduct');
+
+Route::post('/searchproduct', [App\Http\Controllers\ProductController::class, 'search'])->name('search.product');
 
 Auth::routes();
 

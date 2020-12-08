@@ -9,9 +9,12 @@ use App\Models\Category;
 Use Session;
 
 
+
 class productController extends Controller
 {
     //
+  
+
     public function create(){
         return view('insertProduct') ->with('categories',Category::all());;
     }
@@ -39,7 +42,57 @@ class productController extends Controller
     }
 
     public function show(){
-        $products=Product::all();
+        $products=Product::paginate(4);
+        
         return view('showProduct')->with('products',$products);
     }
+
+    public function edit($id){
+       
+        $products =Product::all()->where('id',$id);
+        //select * from products where id='$id'
+        
+        return view('editproduct')->with('products',$products)
+                                ->with('categories',Category::all());
+    }
+
+    public function delete($id){
+        $products=Product::find($id);
+        $products->delete();
+        return redirect()->route('showProduct');
+    }
+
+    public function update(){
+        $r=request();//retrive submited form data
+        $products =Product::find($r->ID);  //get the record based on product ID      
+        if($r->file('product-image')!=''){
+            $image=$r->file('product-image');        
+            $image->move('images',$image->getClientOriginalName());                   
+            $imageName=$image->getClientOriginalName(); 
+            $products->image=$imageName;
+            }         
+        $products->name=$r->name;
+        $products->description=$r->description;
+        $products->price=$r->price;
+        $products->quantity=$r->quantity;
+        $products->categoryID=$r->category;
+        $products->save(); //run the SQL update statment
+        return redirect()->route('showProduct');
+    }
+
+    public function search(){
+        $r=request();//retrive submited form data
+        $keyword=$r->searchProduct;
+        $products =DB::table('products')
+        ->leftjoin('categories', 'categories.id', '=', 'products.categoryID')
+        ->select('categories.name as catname','categories.id as catid','products.*')
+        ->where('products.name', 'like', '%' . $keyword . '%')
+        ->orWhere('products.description', 'like', '%' . $keyword . '%')
+        //->get();
+        ->paginate(4); 
+               
+        return view('showProduct')->with('products',$products);
+
+    }
+
 }

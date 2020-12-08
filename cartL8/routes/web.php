@@ -40,6 +40,8 @@ Route::post('/insertProduct/store', [App\Http\Controllers\ProductController::cla
 
 Route::get('/showProduct', [App\Http\Controllers\ProductController::class, 'show'])->name('showProduct');
 
+Route::get('/clientView', [App\Http\Controllers\ProductController::class, 'clientView'])->name('clientView');
+
 Route::get('/insertProduct', [App\Http\Controllers\ProductController::class, 'create'])->name('insertProduct');
 
 Route::get('/editproduct/{id}', [App\Http\Controllers\ProductController::class, 'edit'])->name('editproduct');

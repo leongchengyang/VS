@@ -94,5 +94,10 @@ class productController extends Controller
         return view('showProduct')->with('products',$products);
 
     }
+    public function clientView(){
+        $products=Product::paginate(3);
+        
+        return view('clientView')->with('products',$products);
+    }
 
 }

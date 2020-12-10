@@ -1,14 +1,4 @@
-@extends('layouts.app')
-@section('content') 
-            <div class="container" >
-                <div class="row" style="text-align:right">
-                    
-                    <form class="form-group"  method="post" action="{{ route('updateproduct') }}" enctype="multipart/form-data" >
-                    @csrf <!-- very important if you didn't insert CSRF, it not allow submit the data-->
-                    <p>
-                        <h3>Edit Product</h3>
-                    </p>
-                    @foreach($products as $product)
+cts as $product)
 
                     <p>
                         <label for="ID" class="label">Product ID</label>
@@ -54,4 +44,7 @@
                     
                 </div>
             </div>
+@endsection
+
+@section('aaa')
 @endsection

@@ -40,8 +40,6 @@ Route::post('/insertProduct/store', [App\Http\Controllers\ProductController::cla
 
 Route::get('/showProduct', [App\Http\Controllers\ProductController::class, 'show'])->name('showProduct');
 
-Route::get('/clientView', [App\Http\Controllers\ProductController::class, 'clientView'])->name('clientView');
-
 Route::get('/insertProduct', [App\Http\Controllers\ProductController::class, 'create'])->name('insertProduct');
 
 Route::get('/editproduct/{id}', [App\Http\Controllers\ProductController::class, 'edit'])->name('editproduct');
@@ -51,6 +49,18 @@ Route::get('/deleteProduct/{id}', [App\Http\Controllers\ProductController::class
 Route::post('/updateproduct', [App\Http\Controllers\ProductController::class, 'update'])->name('updateproduct');
 
 Route::post('/searchproduct', [App\Http\Controllers\ProductController::class, 'search'])->name('search.product');
+
+Route::get('/products', [App\Http\Controllers\ProductController::class, 'showProducts'])->name('products');
+
+Route::get('/product_detail/{id}', [App\Http\Controllers\ProductController::class, 'showProductDetail'])->name('product.detail');
+//productdetail.blade.php?id=11
+
+Route::post('/addToCart', [App\Http\Controllers\CartController::class, 'add'])->name('add.to.cart'); // when user click on add to cart in product detail, id and quantity add to cart
+
+Route::get('/myCart', [App\Http\Controllers\CartController::class, 'show'])->name('my.cart');  //user view all items added to cart
+
+
+
 
 Auth::routes();
 

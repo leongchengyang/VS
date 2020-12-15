@@ -110,4 +110,10 @@ class productController extends Controller
                                 ->with('categories',Category::all());
     }
 
+    public function clientView(){
+        $products=Product::paginate(4);
+        
+        return view('clientView')->with('products',$products);
+      
+    }
 }

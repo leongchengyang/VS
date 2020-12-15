@@ -48,9 +48,9 @@ Route::get('/deleteProduct/{id}', [App\Http\Controllers\ProductController::class
 
 Route::post('/updateproduct', [App\Http\Controllers\ProductController::class, 'update'])->name('updateproduct');
 
-Route::post('/searchproduct', [App\Http\Controllers\ProductController::class, 'search'])->name('search.product');
+Route::get('/clientView', [App\Http\Controllers\ProductController::class, 'clientView'])->name('clientView');
 
-Route::get('/products', [App\Http\Controllers\ProductController::class, 'showProducts'])->name('products');
+Route::post('/searchproduct', [App\Http\Controllers\ProductController::class, 'search'])->name('search.product');
 
 Route::get('/product_detail/{id}', [App\Http\Controllers\ProductController::class, 'showProductDetail'])->name('product.detail');
 //productdetail.blade.php?id=11
@@ -58,6 +58,8 @@ Route::get('/product_detail/{id}', [App\Http\Controllers\ProductController::clas
 Route::post('/addToCart', [App\Http\Controllers\CartController::class, 'add'])->name('add.to.cart'); // when user click on add to cart in product detail, id and quantity add to cart
 
 Route::get('/myCart', [App\Http\Controllers\CartController::class, 'show'])->name('my.cart');  //user view all items added to cart
+
+Route::get('/deleteCart/{id}', [App\Http\Controllers\CartController::class, 'delete'])->name('deleteCart');
 
 Route::get('/showmyCart', [App\Http\Controllers\CartController::class, 'showMyCart'])->name('show.myCart');
 

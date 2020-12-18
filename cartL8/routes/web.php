@@ -65,6 +65,12 @@ Route::get('/showmyCart', [App\Http\Controllers\CartController::class, 'showMyCa
 
 Route::post('/createorder', [App\Http\Controllers\OrderController::class, 'add'])->name('create.order');
 
+Route::post('/createorder', [App\Http\Controllers\OrderController::class, 'add'])->name('create.order');
+
+Route::get('/myorder', [App\Http\Controllers\OrderController::class, 'show'])->name('my.order');
+
+
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
